@@ -24,6 +24,22 @@ function Storage() {
         }
         return cars;
     }
+
+    Storage.prototype.deleteCarFromStorage = (carTitle) => {
+        let cars = this.getCarsFromStorage()
+        cars.forEach((car, index) => {
+            if (car.title === carTitle) {
+                cars.splice(index, 1)
+            }
+            localStorage.setItem("cars", JSON.stringify(cars))
+        })
+    }
+
+    Storage.prototype.deleteAllCars = () => {
+        localStorage.removeItem("cars")
+    }
 }
+
+
 
 

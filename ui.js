@@ -9,7 +9,6 @@ UI.prototype.addCarToUI = function (newCar) {
 
     const carList = document.getElementById("cars")
     const carsFromLS = storage.getCarsFromStorage()
-    debugger;
     carList.innerHTML += `
     <tr>
         <td><img src="${newCar.url}" class="img-fluid img-thumbnail"></td>
@@ -53,4 +52,19 @@ UI.prototype.loadAllCars = (cars) => {
         </tr> 
         `
     })
+}
+
+UI.prototype.deleteCarFromUI = (element) => {
+    element.parentElement.parentElement.remove()
+}
+
+UI.prototype.deleteAllCars = () => {
+    const carList = document.getElementById("cars")
+    // allCars.innerHTML = ""
+
+    while (carList.firstElementChild !== null) {
+        carList.firstElementChild.remove()
+    }
+
+    ui.displayMessage("Tüm araçlar başarıyla temizlendi", "success")
 }
