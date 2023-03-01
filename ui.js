@@ -24,3 +24,16 @@ UI.prototype.clearInputs = function (element1, element2, element3) {
     element2.value = ""
     element3.value = ""
 }
+
+UI.prototype.displayMessage = function (message, type) {
+    const cardBody = document.getElementById("cb1")
+
+    const div = document.createElement("div")
+    div.className = `alert alert-${type}`
+    div.textContent = message
+
+    cardBody.appendChild(div)
+    setTimeout(() => {
+        div.remove()
+    }, 3000)
+}

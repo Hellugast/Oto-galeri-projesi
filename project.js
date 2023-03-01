@@ -20,13 +20,16 @@ function addCar(e) {
     const price = priceElement.value
     const url = urlElement.value
 
-    if (title === "" || price === "", url === "") {
-
+    if (title === "" || price === "" || url === "") {
+        // alert("Lütfen bütün değerleri giriniz")
+        ui.displayMessage("Lütfen değerleri doğru giriniz", "danger")
     }
     else {
         const newCar = new Car(title, price, url)
 
         ui.addCarToUI(newCar)
+
+        ui.displayMessage("Araç başarıyla eklendi", "success")
     }
 
     ui.clearInputs(titleElement, urlElement, priceElement)
