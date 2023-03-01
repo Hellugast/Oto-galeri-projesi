@@ -4,9 +4,12 @@ function UI() {
 
 }
 
+
 UI.prototype.addCarToUI = function (newCar) {
 
     const carList = document.getElementById("cars")
+    const carsFromLS = storage.getCarsFromStorage()
+    debugger;
     carList.innerHTML += `
     <tr>
         <td><img src="${newCar.url}" class="img-fluid img-thumbnail"></td>
@@ -36,4 +39,18 @@ UI.prototype.displayMessage = function (message, type) {
     setTimeout(() => {
         div.remove()
     }, 3000)
+}
+
+UI.prototype.loadAllCars = (cars) => {
+    const carList = document.getElementById("cars")
+    cars.forEach((car) => {
+        carList.innerHTML += `
+        <tr>
+            <td><img src="${car.url}" class="img-fluid img-thumbnail"></td>
+            <td>${car.title}</td>
+            <td>${car.price}</td>
+         <td><a href="#" id="delete-car" class="btn btn-danger">Aracı Sil</a></td>
+        </tr> 
+        `
+    })
 }
